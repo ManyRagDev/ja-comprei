@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sugestões do Chef</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;600;700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+            extend: {
+                colors: {
+                    "primary": "#80b294",
+                    "background-light": "#f6f7f7",
+                    "background-dark": "#171c19",
+                    "sage": "#81B29A", // User requested specific sage
+                    "terracotta": "#E07A5F", // User requested specific terracotta
+                    "cream": "#FDFBF7", // User requested specific background
+                },
+                fontFamily: {
+                    "display": ["Noto Serif", "serif"],
+                    "sans": ["Noto Sans", "sans-serif"],
+                },
+                borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                boxShadow: {
+                    "soft": "0 15px 35px -5px rgba(0, 0, 0, 0.06), 0 10px 15px -3px rgba(0, 0, 0, 0.02)",
+                }
+            },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar hiding for clean UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-cream dark:bg-background-dark text-[#121614] font-display antialiased overflow-x-hidden">
+<!-- Main Container: Constrained to phone size for desktop viewing, full width on mobile -->
+<div class="relative flex min-h-screen w-full flex-col mx-auto max-w-md bg-cream dark:bg-background-dark shadow-2xl overflow-hidden">
+<!-- Header -->
+<header class="sticky top-0 z-40 flex items-center justify-between bg-cream/90 backdrop-blur-md px-6 py-4 dark:bg-background-dark/95">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sage/15 text-sage dark:bg-primary/20 dark:text-primary">
+<span class="material-symbols-outlined text-[24px] icon-fill">restaurant_menu</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-[#121614] dark:text-white">Sugestões do Chef</h1>
+</div>
+<button class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-transparent text-[#121614] hover:bg-black/5 dark:text-white dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+</header>
+<!-- Scrollable Content -->
+<main class="flex-1 overflow-y-auto px-5 pb-28 pt-2 space-y-8 no-scrollbar">
+<!-- Context Message -->
+<div class="px-1">
+<p class="text-sm font-medium text-[#677e70] font-sans dark:text-gray-400">
+                    Com base no seu recibo, aqui estão 3 receitas deliciosas que você pode preparar agora.
+                </p>
+</div>
+<!-- Recipe Card 1 -->
+<article class="group relative flex flex-col overflow-hidden rounded-[2rem] bg-white shadow-soft transition-all duration-300 hover:shadow-xl dark:bg-[#232a26]">
+<!-- Image Container -->
+<div class="relative aspect-[4/3] w-full overflow-hidden rounded-t-[2rem]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Salada Caesar fresca com frango grelhado e croutons crocantes" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA2nYWaiWpKoUxXU_6IJ-7xvuOcmAQdzQBuGcSbp5NYMFmoAdJds-jcro0MqGwS6-jVivcwxxwLI4OEHGpj-FUAbOM-3tdBG4MdceGpS_rET0YQW75kmcNEp7APnWf6xhM3BWDJijd9gNb7Po6mqXrEm7fSUBTTIPtfTDMqo2qVKOWObiACb_kbFJgFlEp5YtUAwIgzoR3oFRXl4QNTRACQAOGXGymlnY6uhrQy08USC3-cTPLrZ-nY_tH6DiM_qGiIVXyMDvRQgnE');"></div>
+<!-- Overlay Gradient -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60"></div>
+<!-- Floating Badge -->
+<div class="absolute top-4 right-4 rounded-full bg-white/95 px-3 py-1.5 text-xs font-bold text-sage backdrop-blur shadow-sm dark:bg-black/80 dark:text-primary">
+<span class="flex items-center gap-1 font-sans">
+<span class="material-symbols-outlined text-[16px] icon-fill">eco</span>
+                            Saudável
+                        </span>
+</div>
+</div>
+<!-- Content -->
+<div class="flex flex-col gap-4 p-6">
+<h3 class="font-display text-2xl font-bold leading-tight text-gray-900 dark:text-white">
+                        Salada Caesar com Frango Grelhado
+                    </h3>
+<!-- Metadata -->
+<div class="flex items-center gap-5 text-sm font-medium text-gray-500 font-sans dark:text-gray-400">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[20px] text-terracotta">schedule</span>
+<span>15 min</span>
+</div>
+<div class="h-1 w-1 rounded-full bg-gray-300"></div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[20px] text-terracotta">skillet</span>
+<span>Fácil</span>
+</div>
+</div>
+<!-- Action -->
+<div class="mt-2 flex items-center justify-between">
+<div class="flex -space-x-2 overflow-hidden">
+<div class="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-gray-200 bg-cover bg-center dark:ring-[#232a26]" data-alt="Avatar de usuário feminino" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDCr9Qdq5wYVsTMcj-TB6c0VOoDBzxDOyhs1Hgiz5WWGSNs0TEMoSKTjz2yVdU_6PQyoeFf1GfTzyQBt-gd3iX1yXjf4ZDpUgjTapR9bX3aBxhUMrA1LxurnSS6fHtu87Ryus09sw8q4ozGHhjMBARuA96ddvjUrroYjImt5RPwWOOlL8sAEVpDIOHcX4IMEFlwly80kBdf-RJ9bimqcLFYZCkFFxUfRMCrEvi_zOZtA9gfss6IvvXesY-fv21XiOdKJS7GrXRn6T0')"></div>
+<div class="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-gray-200 bg-cover bg-center dark:ring-[#232a26]" data-alt="Avatar de usuário masculino" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAPTYMs_LGNZoJNw72SC6gHgBAY46prQaErZZKAW7q5oYTatT0BZgjRERgXGRmq6C9xj5J7nBySqjwakc1IJIpEej_xM7Z38ghJkBQTsCi1vBnpSt-RWfwrbrPM3M4aOMxjJY5GdhNTjWUfux78C2yNXU2GCm5Ox0Pc0U3y6Lk0S5pJMg6zL1mw5ubcZLKpbNNdW8OAwR1WRTq8YYwB05iotAcAQku9_8M65djXXlCKqTP-IoxwGCJeIsDIJ3xHI2QztuG2_z71ssk')"></div>
+</div>
+<button class="flex items-center justify-center rounded-full bg-sage px-6 py-3 text-sm font-bold text-white shadow-lg shadow-sage/30 transition-transform active:scale-95 font-sans hover:bg-[#72a38b]">
+                            Ver Receita
+                        </button>
+</div>
+</div>
+</article>
+<!-- Recipe Card 2 -->
+<article class="group relative flex flex-col overflow-hidden rounded-[2rem] bg-white shadow-soft transition-all duration-300 hover:shadow-xl dark:bg-[#232a26]">
+<div class="relative aspect-[4/3] w-full overflow-hidden rounded-t-[2rem]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Macarrão espaguete com molho de tomate vermelho brilhante e manjericão" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDFSpsCZJxmcY6AA9Y8Bc7mAlYCU7u0wr1rcuhO65f7xlsAVsRqmRgRCEIW-eapqjH5JAUr5eF3N4f3voetk86rLJNQynEgBHI5R7x7aXEgqeSPzQY_vSYz7ANmM_5RJmTiFKVoQNzi81H756FiTyzrqgjgHBHfoYwrY0YDl4cRleMn_mSoCz0yjRISp5rBegJ0Y5o0BMtb1MG9jd2rEM5vGL2qzQmLXUcUVcMQbxma5FRoRnbwBiclsScWbwdKhYKYF1DdufMzN_4');"></div>
+<div class="absolute top-4 right-4 rounded-full bg-terracotta px-3 py-1.5 text-xs font-bold text-white shadow-md">
+<span class="flex items-center gap-1 font-sans">
+<span class="material-symbols-outlined text-[16px] icon-fill">local_fire_department</span>
+                            Popular
+                        </span>
+</div>
+</div>
+<div class="flex flex-col gap-4 p-6">
+<h3 class="font-display text-2xl font-bold leading-tight text-gray-900 dark:text-white">
+                        Espaguete ao Pomodoro Fresco
+                    </h3>
+<div class="flex items-center gap-5 text-sm font-medium text-gray-500 font-sans dark:text-gray-400">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[20px] text-terracotta">schedule</span>
+<span>25 min</span>
+</div>
+<div class="h-1 w-1 rounded-full bg-gray-300"></div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[20px] text-terracotta">skillet</span>
+<span>Médio</span>
+</div>
+</div>
+<div class="mt-2 flex items-center justify-end">
+<button class="flex w-full items-center justify-center rounded-full bg-sage px-6 py-3 text-sm font-bold text-white shadow-lg shadow-sage/30 transition-transform active:scale-95 font-sans hover:bg-[#72a38b]">
+                            Ver Receita
+                        </button>
+</div>
+</div>
+</article>
+<!-- Recipe Card 3 -->
+<article class="group relative flex flex-col overflow-hidden rounded-[2rem] bg-white shadow-soft transition-all duration-300 hover:shadow-xl dark:bg-[#232a26]">
+<div class="relative aspect-[4/3] w-full overflow-hidden rounded-t-[2rem]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Tigela com mistura de legumes salteados coloridos" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBWSfhWuWkxvfVqG5jIANNr_NY9Gj0p-ykYAQS95Tub6dZgh4VPHiVYwDq5XK0yYvcQjhYKxafI-AOPNH0EEZ5xsneh4U4ZPONr0gotd-_3665u12gzlotX7E1Yxb14QyOlI3OLnN0E9ITAUgu3zQE2jjC4WSHYvj0iDHrKp-3t9BY9hLRoQ5VdIq8CTrgoytnTK7Vd6GLrvEAw2Dc7q5YgZBLl3rmhSFwWoVAGvcwOezEZ4N8jPynHEe4ux78-oozFVdADTr3GI4Y');"></div>
+</div>
+<div class="flex flex-col gap-4 p-6">
+<h3 class="font-display text-2xl font-bold leading-tight text-gray-900 dark:text-white">
+                        Legumes Salteados com Shoyu
+                    </h3>
+<div class="flex items-center gap-5 text-sm font-medium text-gray-500 font-sans dark:text-gray-400">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[20px] text-terracotta">schedule</span>
+<span>20 min</span>
+</div>
+<div class="h-1 w-1 rounded-full bg-gray-300"></div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[20px] text-terracotta">skillet</span>
+<span>Fácil</span>
+</div>
+</div>
+<div class="mt-2 flex items-center justify-end">
+<button class="flex w-full items-center justify-center rounded-full bg-sage px-6 py-3 text-sm font-bold text-white shadow-lg shadow-sage/30 transition-transform active:scale-95 font-sans hover:bg-[#72a38b]">
+                            Ver Receita
+                        </button>
+</div>
+</div>
+</article>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 z-50 w-full max-w-md border-t border-[#ebefed] bg-white/95 px-8 pb-8 pt-4 backdrop-blur-xl dark:bg-[#171c19]/95 dark:border-white/5">
+<div class="flex items-end justify-between">
+<a class="group flex flex-1 flex-col items-center gap-1.5 text-[#677e70] transition-colors hover:text-sage dark:text-gray-500" href="#">
+<span class="material-symbols-outlined text-[28px] transition-transform group-hover:-translate-y-1">qr_code_scanner</span>
+<span class="text-[10px] font-bold tracking-wider font-sans uppercase">Scan</span>
+</a>
+<a class="group flex flex-1 flex-col items-center gap-1.5 text-sage transition-colors dark:text-primary" href="#">
+<div class="relative">
+<span class="material-symbols-outlined text-[28px] icon-fill drop-shadow-sm transition-transform group-hover:-translate-y-1">menu_book</span>
+<span class="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-terracotta dark:border-[#171c19]"></span>
+</div>
+<span class="text-[10px] font-bold tracking-wider font-sans uppercase">Receitas</span>
+</a>
+<a class="group flex flex-1 flex-col items-center gap-1.5 text-[#677e70] transition-colors hover:text-sage dark:text-gray-500" href="#">
+<span class="material-symbols-outlined text-[28px] transition-transform group-hover:-translate-y-1">person</span>
+<span class="text-[10px] font-bold tracking-wider font-sans uppercase">Perfil</span>
+</a>
+</div>
+</nav>
+</div>
+</body></html>

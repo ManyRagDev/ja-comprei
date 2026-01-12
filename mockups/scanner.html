@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Receipt Scanner</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#2b6cee",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark text-white font-display h-screen w-full overflow-hidden select-none">
+<!-- Camera Feed Background (Simulated) -->
+<div class="absolute inset-0 z-0">
+<!-- Using a blurred office desk image to simulate the camera looking at a surface -->
+<img alt="Simulated camera viewfinder showing a blurry wooden desk surface prepared for scanning documents" class="w-full h-full object-cover opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOZwM3Pa99UekqumsKBs56ug_8x1GSLNvgN8rABnxJ5cHh1LCL3s_bq4A-eypC7yoK2nLpxXc3nqQEJmKZT13GQtU14dQ0Apamw46Xj7axOhfd16_U-V6wWt01aKkgv13vI6PUilQQFnAN7sLUuE5Am00wQKa_MuILuQt57uS0kHgHWQIF9SEw17awK6XLx9TG0mpdrJMbsv9gDFVtWM2B6QK1JYd1w8jjrUqgZ_4GQ7BlAGMpZjglmVZT_rzGBkZEKHy4peNTZ18"/>
+</div>
+<!-- UI Overlay Wrapper -->
+<div class="relative z-10 flex flex-col h-full justify-between">
+<!-- Top App Bar Overlay -->
+<header class="pt-14 pb-6 px-6 flex justify-between items-center bg-gradient-to-b from-black/80 to-transparent">
+<!-- Flash Toggle -->
+<button class="flex items-center justify-center w-10 h-10 rounded-full bg-black/30 backdrop-blur-md text-white hover:bg-white/20 transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="Flashlight" style="font-size: 24px;">flash_on</span>
+</button>
+<!-- App Title -->
+<h1 class="text-white text-lg font-bold tracking-[-0.015em] drop-shadow-lg">Já Comprei</h1>
+<!-- Settings / Menu -->
+<button class="flex items-center justify-center w-10 h-10 rounded-full bg-black/30 backdrop-blur-md text-white hover:bg-white/20 transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="Gear" style="font-size: 24px;">settings</span>
+</button>
+</header>
+<!-- Central Scanning Area -->
+<main class="flex-1 relative flex flex-col items-center justify-center w-full">
+<!-- Scanning Frame with Scrim -->
+<!-- Using a large box-shadow to create the 'hole' effect (scrim) around the frame -->
+<div class="relative w-[75%] aspect-[3/4] rounded-xl shadow-[0_0_0_9999px_rgba(0,0,0,0.65)]">
+<!-- Corner Markers (Primary Color) -->
+<!-- Top Left -->
+<div class="absolute -top-[2px] -left-[2px] w-8 h-8 border-t-[4px] border-l-[4px] border-primary rounded-tl-lg drop-shadow-md"></div>
+<!-- Top Right -->
+<div class="absolute -top-[2px] -right-[2px] w-8 h-8 border-t-[4px] border-r-[4px] border-primary rounded-tr-lg drop-shadow-md"></div>
+<!-- Bottom Left -->
+<div class="absolute -bottom-[2px] -left-[2px] w-8 h-8 border-b-[4px] border-l-[4px] border-primary rounded-bl-lg drop-shadow-md"></div>
+<!-- Bottom Right -->
+<div class="absolute -bottom-[2px] -right-[2px] w-8 h-8 border-b-[4px] border-r-[4px] border-primary rounded-br-lg drop-shadow-md"></div>
+<!-- Subtle Grid for Alignment -->
+<div class="absolute inset-0 grid grid-cols-3 grid-rows-3 opacity-10 pointer-events-none">
+<div class="border-r border-white"></div>
+<div class="border-r border-white"></div>
+<div></div>
+<div class="border-t border-white col-span-3"></div>
+<div class="border-r border-white"></div>
+<div class="border-r border-white"></div>
+<div></div>
+<div class="border-t border-white col-span-3"></div>
+<div class="border-r border-white"></div>
+<div class="border-r border-white"></div>
+</div>
+</div>
+<!-- Helper Text (MetaText) -->
+<div class="absolute bottom-12 left-0 right-0 flex justify-center z-20 px-6">
+<p class="text-white/90 text-sm font-medium bg-black/40 px-4 py-2 rounded-lg backdrop-blur-md shadow-sm text-center">
+                    Align receipt within frame
+                </p>
+</div>
+</main>
+<!-- Bottom Controls (CameraControl) -->
+<footer class="pb-12 pt-16 px-8 flex items-center justify-between bg-gradient-to-t from-black/90 via-black/60 to-transparent">
+<!-- Gallery / Recent Scans -->
+<button class="flex items-center justify-center group active:scale-95 transition-transform duration-150">
+<div class="w-12 h-12 rounded-lg bg-gray-800 border-2 border-white/20 overflow-hidden relative shadow-lg">
+<img class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" data-alt="Thumbnail preview of the last scanned receipt showing black text on white paper" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_n6NbQQmG-UX1xRJY15_8OeStkcd3JyvJe-Pw2oX200vG8G74JIfw9oXjU85eQq8IzopShaCTqdumks32d6Rrouywu5BMWKEyHNHfDcLuIEPFoOC13XwsITqovuu8KW6FeVPQT2MGW9xhrfOd7z9T-MXiDSNs8lNwe40S7P0gRGTmTEwU0dqmNuxIsY5g_M8k4uYpx1CZtrv5l_31t3xXhBo7w7276IRdWn4t2t3a4VHgKXAB3c0XHhkxbNUxWg7mC7bxQdj6nNU"/>
+<div class="absolute inset-0 bg-black/10"></div>
+</div>
+</button>
+<!-- Shutter Button -->
+<button class="relative flex items-center justify-center group outline-none active:scale-95 transition-transform duration-150">
+<!-- Outer Ring -->
+<div class="w-[84px] h-[84px] rounded-full border-[5px] border-white flex items-center justify-center shadow-2xl bg-black/20 backdrop-blur-sm">
+<!-- Inner Circle (Capture Trigger) -->
+<div class="w-[68px] h-[68px] rounded-full bg-white group-active:bg-primary transition-colors duration-150 shadow-inner"></div>
+</div>
+</button>
+<!-- Manual Input Mode -->
+<button class="flex flex-col items-center justify-center w-12 h-12 rounded-full bg-white/10 backdrop-blur-md text-white hover:bg-white/20 transition-all active:scale-95 shadow-lg border border-white/10">
+<span class="material-symbols-outlined" data-icon="Spiral" style="font-size: 24px;">edit_document</span>
+</button>
+</footer>
+</div>
+</body></html>

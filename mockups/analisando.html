@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Já Comprei - Loading</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;family=Lato:wght@300;400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --bg-cream: #FDFBF7;
+            --sage-green: #8DA399;
+            --terracotta: #C76D5B;
+            --text-dark: #2D2A26;
+            --text-light: #6B665E;
+        }
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }@keyframes float {
+            0% { transform: translateY(0px); opacity: 0.6; }
+            50% { transform: translateY(-10px); opacity: 1; }
+            100% { transform: translateY(0px); opacity: 0.6; }
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.5; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(0.95); opacity: 0.5; }
+        }
+        @keyframes rotate-slow {
+            0% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+            100% { transform: rotate(-5deg); }
+        }
+        .animate-steam-1 {
+            animation: float 3s ease-in-out infinite;
+        }
+        .animate-steam-2 {
+            animation: float 3s ease-in-out infinite 0.5s;
+        }
+        .animate-steam-3 {
+            animation: float 3s ease-in-out infinite 1s;
+        }
+        .animate-pulse-subtle {
+            animation: pulse-ring 4s ease-in-out infinite;
+        }
+        .animate-tilt {
+            animation: rotate-slow 6s ease-in-out infinite;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="h-screen w-full flex flex-col items-center justify-center relative overflow-hidden">
+<div class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full border border-[var(--sage-green)] opacity-10"></div>
+<div class="absolute bottom-0 left-0 -ml-16 -mb-16 w-48 h-48 rounded-full border border-[var(--terracotta)] opacity-10"></div>
+<div class="flex flex-col items-center justify-center z-10 p-8 max-w-sm w-full text-center space-y-10">
+<div class="relative w-40 h-40 flex items-center justify-center">
+<div class="absolute inset-0 rounded-full border-2 border-[var(--sage-green)] opacity-20 animate-pulse-subtle"></div>
+<div class="absolute inset-4 rounded-full border border-[var(--terracotta)] opacity-10 animate-pulse-subtle" style="animation-delay: 1s;"></div>
+<div class="relative z-10">
+<div class="absolute -top-10 left-1/2 transform -translate-x-1/2 flex space-x-3">
+<span class="material-symbols-outlined text-[var(--terracotta)] opacity-70 animate-steam-1 text-3xl">air</span>
+<span class="material-symbols-outlined text-[var(--terracotta)] opacity-70 animate-steam-2 text-2xl -mt-2">air</span>
+<span class="material-symbols-outlined text-[var(--terracotta)] opacity-70 animate-steam-3 text-3xl">air</span>
+</div>
+<div class="animate-tilt text-[var(--sage-green)]">
+<span class="material-symbols-outlined text-8xl font-light">skillet</span>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<h2 class="text-2xl font-serif text-[var(--text-dark)] leading-snug">
+                O Chef está analisando seus ingredientes...
+            </h2>
+<p class="text-sm text-[var(--text-light)] font-light tracking-wide">
+                Criando receitas deliciosas para você.
+            </p>
+</div>
+<div class="w-16 flex justify-center space-x-2 mt-4">
+<div class="w-2 h-2 rounded-full bg-[var(--terracotta)] animate-bounce" style="animation-delay: 0ms"></div>
+<div class="w-2 h-2 rounded-full bg-[var(--terracotta)] animate-bounce" style="animation-delay: 150ms"></div>
+<div class="w-2 h-2 rounded-full bg-[var(--terracotta)] animate-bounce" style="animation-delay: 300ms"></div>
+</div>
+</div>
+<div class="absolute bottom-8 text-[var(--sage-green)] opacity-40">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+
+</body></html>

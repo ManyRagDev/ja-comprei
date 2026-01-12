@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Já Comprei - Cozinha Inteligente</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#81b19a", // Sage Green
+                        "primary-dark": "#6a9480",
+                        "accent": "#E07A5F", // Terracotta Orange
+                        "background-light": "#FDFBF7", // Soft Cream / Off-White
+                        "background-dark": "#171b19",
+                        "text-main": "#131614",
+                        "text-muted": "#687d73",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem", 
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'glow': '0 0 15px rgba(129, 178, 154, 0.3)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-text-main font-display antialiased selection:bg-primary/30">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 w-full backdrop-blur-md bg-background-light/90 dark:bg-background-dark/90 border-b border-gray-100 dark:border-gray-800">
+<div class="flex items-center justify-between px-6 py-4 max-w-lg mx-auto w-full">
+<div class="flex items-center gap-2">
+<div class="text-primary flex items-center justify-center bg-primary/10 p-2 rounded-full">
+<span class="material-symbols-outlined filled-icon" style="font-size: 24px;">skillet</span>
+</div>
+<h2 class="text-text-main text-xl font-serif font-bold tracking-tight">Já Comprei</h2>
+</div>
+<button class="text-text-main hover:text-primary transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- HeroSection -->
+<section class="flex flex-col items-center px-6 pt-10 pb-6 w-full max-w-lg mx-auto">
+<div class="flex flex-col gap-6 text-center mb-10">
+<div class="inline-flex items-center justify-center gap-2 px-3 py-1 bg-accent/10 rounded-full w-fit mx-auto border border-accent/20">
+<span class="material-symbols-outlined text-accent" style="font-size: 16px;">restaurant_menu</span>
+<span class="text-accent text-xs font-bold uppercase tracking-wider">Cozinha com IA</span>
+</div>
+<h1 class="text-text-main text-[2.75rem] leading-[1.1] font-serif font-medium tracking-tight">
+                    Não sabe o que <span class="italic text-primary font-semibold relative inline-block">
+                        cozinhar
+                        <svg class="absolute w-full h-2 bottom-1 left-0 text-primary/20 -z-10" preserveaspectratio="none" viewbox="0 0 100 10">
+<path d="M0 5 Q 50 10 100 5" fill="none" stroke="currentColor" stroke-width="8"></path>
+</svg>
+</span> com o que tem na geladeira?
+                </h1>
+<p class="text-text-muted text-lg font-normal leading-relaxed px-2">
+                    Transforme sobras em pratos de Chef com Inteligência Artificial em segundos.
+                </p>
+<div class="flex flex-col w-full gap-3 pt-2">
+<button class="flex w-full cursor-pointer items-center justify-center gap-3 rounded-xl h-14 px-6 bg-primary hover:bg-primary-dark transition-all shadow-glow hover:shadow-lg text-white text-base font-bold tracking-wide group">
+<span class="material-symbols-outlined group-hover:animate-pulse">auto_awesome</span>
+<span>Experimentar Agora</span>
+</button>
+<p class="text-xs text-text-muted font-medium">✨ Grátis para testar • Sem cartão de crédito</p>
+</div>
+</div>
+<!-- Phone Mockup -->
+<div class="relative w-full max-w-[320px] mx-auto perspective-1000">
+<div class="relative bg-gray-900 rounded-[2.5rem] p-3 shadow-2xl border-[6px] border-gray-800 ring-1 ring-white/20 transform rotate-[-2deg] hover:rotate-0 transition-transform duration-500 ease-out">
+<!-- Notch -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 h-6 w-24 bg-black rounded-b-xl z-20"></div>
+<!-- Screen Content -->
+<div class="relative h-[580px] w-full bg-white rounded-[2rem] overflow-hidden flex flex-col">
+<!-- App Header -->
+<div class="h-14 bg-background-light flex items-end justify-between px-5 pb-3">
+<span class="material-symbols-outlined text-gray-400 text-sm">arrow_back_ios</span>
+<span class="font-serif font-bold text-gray-800">Resultado</span>
+<span class="material-symbols-outlined text-gray-400 text-sm">more_horiz</span>
+</div>
+<!-- Recipe Image -->
+<div class="h-48 w-full bg-cover bg-center relative" data-alt="Delicious healthy bowl with avocado, eggs and vegetables" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCadnVLWvsq1bTCgywAOYsDo5LF-qKMW7c1uMow8P6UpOS0e4h8uaWhTsyK7lP1iKMVlSdQd9IfW8LMiNlhrc93Fd7iL6ADtqY6_09w_-txAdneq8SdcaCXbNMMmBgVkt9K1VDMtIdo3yiPeYOuF84HqGVFW1Ygp3qXc2Ajl1yYIX-S70WHK9VCRoF1zchMbMeu77qZ2Gn1dwF8gy8afbIU099-3Anl1EbSNyxLiatMEGsSbU_mNP-0Sf7B74VPRBnRRFqXLYIQTJ4');">
+<div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-3 left-4 text-white">
+<span class="bg-accent/90 text-[10px] font-bold px-2 py-0.5 rounded text-white mb-1 inline-block">98% Match</span>
+<h3 class="font-bold text-lg font-serif">Buddha Bowl Verde</h3>
+</div>
+</div>
+<!-- Ingredients List -->
+<div class="flex-1 p-5 flex flex-col gap-4 bg-white">
+<div class="flex justify-between items-center border-b border-gray-100 pb-3">
+<div class="flex flex-col">
+<span class="text-xs text-gray-400 uppercase font-bold">Tempo</span>
+<span class="font-bold text-gray-800">15 min</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="text-xs text-gray-400 uppercase font-bold">Calorias</span>
+<span class="font-bold text-accent">320 kcal</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-sm font-bold text-gray-800">Ingredientes Usados</span>
+<div class="flex items-center gap-3 p-2 bg-gray-50 rounded-lg">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-sm text-gray-600">1/2 Abacate</span>
+</div>
+<div class="flex items-center gap-3 p-2 bg-gray-50 rounded-lg">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-sm text-gray-600">Sobras de Arroz</span>
+</div>
+<div class="flex items-center gap-3 p-2 bg-gray-50 rounded-lg">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-sm text-gray-600">Tomates Cereja</span>
+</div>
+</div>
+</div>
+<!-- App CTA -->
+<div class="p-4 border-t border-gray-100">
+<div class="w-full bg-primary h-10 rounded-lg flex items-center justify-center text-white text-sm font-bold">Ver Receita Completa</div>
+</div>
+</div>
+</div>
+<!-- Floating Badge -->
+<div class="absolute top-20 -right-4 bg-white p-3 rounded-2xl shadow-xl flex items-center gap-3 animate-bounce" style="animation-duration: 3s;">
+<div class="bg-green-100 p-2 rounded-full">
+<span class="material-symbols-outlined text-green-600 text-xl">savings</span>
+</div>
+<div>
+<p class="text-xs text-gray-500 font-bold">Economia estimada</p>
+<p class="text-sm font-black text-gray-800">R$ 450/mês</p>
+</div>
+</div>
+</div>
+</section>
+<!-- FeatureSection (How it Works) -->
+<section class="flex flex-col gap-10 px-6 py-16 max-w-lg mx-auto w-full">
+<div class="text-center">
+<h2 class="text-text-main font-serif text-3xl font-bold mb-3">Como Funciona</h2>
+<p class="text-text-muted">Três passos simples para parar de desperdiçar.</p>
+</div>
+<div class="flex flex-col gap-6">
+<!-- Step 1 -->
+<div class="group flex items-start gap-5 p-5 rounded-2xl bg-white border border-transparent hover:border-primary/20 hover:shadow-soft transition-all duration-300">
+<div class="shrink-0 flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+<span class="material-symbols-outlined">photo_camera</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="text-text-main text-lg font-bold">1. Escaneie</h3>
+<p class="text-text-muted text-sm leading-relaxed">Tire uma foto da nota fiscal ou dos ingredientes que você tem na bancada.</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="group flex items-start gap-5 p-5 rounded-2xl bg-white border border-transparent hover:border-primary/20 hover:shadow-soft transition-all duration-300">
+<div class="shrink-0 flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+<span class="material-symbols-outlined">fact_check</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="text-text-main text-lg font-bold">2. Confira</h3>
+<p class="text-text-muted text-sm leading-relaxed">A Inteligência Artificial identifica cada item em segundos e organiza sua despensa virtual.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="group flex items-start gap-5 p-5 rounded-2xl bg-white border border-transparent hover:border-primary/20 hover:shadow-soft transition-all duration-300">
+<div class="shrink-0 flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+<span class="material-symbols-outlined">chef_hat</span> <!-- Using chef_hat equivalent if available or fallback -->
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="text-text-main text-lg font-bold">3. Cozinhe</h3>
+<p class="text-text-muted text-sm leading-relaxed">Receba receitas criativas e deliciosas na hora, baseadas exatamente no que você tem.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Appetite Appeal Card -->
+<section class="w-full px-4 pb-16 max-w-lg mx-auto">
+<div class="relative overflow-hidden rounded-3xl h-[400px] shadow-lg group">
+<!-- Background Image -->
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Kitchen counter with fresh vegetables, olive oil, bread and a rustic cutting board" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAlvIS-Dl3pT16neQgx0JvnY52pDGlHUeQ4qJH3C1B3qznr6GpYlnBZYdBbLvU5eOcimgAP0nxEV_k8fVj8ftq6UEhUAHJ8pv27Hwq1Slch40JW1EAdmrayIEVdp0SGSYKPPDedjvrmS6K8LWNwQTUA5IEqj4DWB8m72eLyl4CdiGsKGp0rdrHqcZB8g0hJSouFV8NKelnsHm-Nv8TW3ivl4fDf9lOmbBCsYTezJzAnKLAniqVO8S92BDw-7_0YtIz-MJ4Yb_wTpo4');">
+</div>
+<!-- Gradient Overlay -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<!-- Content -->
+<div class="absolute bottom-0 left-0 w-full p-8 flex flex-col gap-4">
+<div class="w-12 h-1 bg-accent rounded-full"></div>
+<h2 class="text-white font-serif text-3xl font-medium leading-tight">
+                        Chega de desperdício. <br/>
+<span class="font-bold text-primary-light">Cozinhe com propósito.</span>
+</h2>
+<p class="text-gray-200 text-sm max-w-xs">
+                        Economize dinheiro e ajude o planeta aproveitando 100% dos seus alimentos.
+                    </p>
+</div>
+</div>
+</section>
+<!-- CTA Section Bottom -->
+<section class="px-6 pb-10 text-center max-w-lg mx-auto">
+<div class="bg-primary/5 rounded-2xl p-8 border border-primary/10">
+<h3 class="text-xl font-bold font-serif mb-2">Pronto para começar?</h3>
+<p class="text-text-muted text-sm mb-6">Junte-se a mais de 10.000 cozinheiros conscientes.</p>
+<button class="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl h-12 px-6 bg-text-main hover:bg-black transition-all text-white text-sm font-bold tracking-wide">
+<span>Baixar o App</span>
+<span class="material-symbols-outlined text-sm">download</span>
+</button>
+</div>
+</section>
+<!-- Footer -->
+<footer class="mt-auto border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-background-dark">
+<div class="flex flex-col items-center gap-6 px-5 py-10 text-center max-w-lg mx-auto">
+<div class="flex items-center gap-2 opacity-80">
+<span class="material-symbols-outlined text-primary">skillet</span>
+<span class="font-serif font-bold text-lg">Já Comprei</span>
+</div>
+<div class="flex gap-6">
+<a class="group bg-gray-50 p-3 rounded-full hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-xl">camera_alt</span> <!-- Simulating Instagram logo -->
+</a>
+<a class="group bg-gray-50 p-3 rounded-full hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-xl">music_note</span> <!-- Simulating Tiktok logo -->
+</a>
+<a class="group bg-gray-50 p-3 rounded-full hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-xl">mail</span>
+</a>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-center gap-4 text-xs text-text-muted">
+<a class="hover:underline" href="#">Termos</a>
+<span>•</span>
+<a class="hover:underline" href="#">Privacidade</a>
+</div>
+<p class="text-text-muted text-xs font-normal">© 2024 Já Comprei. Todos os direitos reservados.</p>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

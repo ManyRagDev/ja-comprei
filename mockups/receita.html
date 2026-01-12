@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Recipe Detail - Já Comprei</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee522b",
+                        "background-light": "#FDFBF7", /* Modified to Soft Cream as requested */
+                        "background-dark": "#221410",
+                        "sage": "#81B29A",
+                        "terracotta": "#E07A5F",
+                    },
+                    fontFamily: {
+                        "display": ["Newsreader", "serif"],
+                        "sans": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem", 
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        "soft": "0 4px 20px -2px rgba(0, 0, 0, 0.05)",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Hide scrollbar for cleaner look */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-background-dark dark:text-background-light font-display antialiased transition-colors duration-200">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden group/design-root">
+<!-- Header / Hero Section with Overlay Nav -->
+<div class="relative w-full h-[40vh] min-h-[320px]">
+<!-- Navigation Overlay -->
+<div class="absolute top-0 left-0 w-full z-20 flex items-center justify-between p-4 pt-12 bg-gradient-to-b from-black/40 to-transparent">
+<button class="flex size-10 items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white hover:bg-white/30 transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">arrow_back_ios_new</span>
+</button>
+<button class="flex size-10 items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white hover:bg-white/30 transition-colors group">
+<span class="material-symbols-outlined group-hover:text-primary group-active:scale-90 transition-transform" style="font-size: 24px;">favorite</span>
+</button>
+</div>
+<!-- Hero Image -->
+<div class="absolute inset-0 w-full h-full bg-gray-200">
+<div class="w-full h-full bg-cover bg-center" data-alt="Close up of a delicious beef sandwich with melted cheese" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBR8TSHpNEoz8uPcuEm7w3zbLgFu2myu4J28a1zql2n5Z70SSHI0OE4n5ZfVSgorpoOO-2gl-9POZ3BAwXrlOCVHn-OcQfmabUlStAkkwk-wvImKrVwpVXQBivpUNraSTQvtPT0Au8I9iP5dNySpe_AJAsxqdsgLimHfWtCx0mrCjM1ShfX5b-ai9H-bUwiSjIa3ke6Y_s6nMDNPVZq2ZOqLxg2mYw3-GgxH6t5LsnFubT0mSzvXPX8v1dWQakmLhK4qyDhmcsLnWs');">
+</div>
+<!-- Bottom Gradient for smooth transition -->
+<div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background-light dark:from-background-dark to-transparent"></div>
+</div>
+</div>
+<!-- Main Content -->
+<div class="relative px-6 -mt-8 z-10 flex flex-col gap-8 pb-32">
+<!-- Title Header -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 mb-1">
+<span class="px-3 py-1 bg-terracotta/10 text-terracotta text-sm font-bold rounded-full border border-terracotta/20">Spicy</span>
+<span class="px-3 py-1 bg-sage/10 text-sage text-sm font-bold rounded-full border border-sage/20">Popular</span>
+</div>
+<h1 class="text-[36px] leading-[1.1] font-bold text-background-dark dark:text-white">
+                    Buraco Quente Paulista
+                </h1>
+</div>
+<!-- Meta Data / Feature Section -->
+<div class="grid grid-cols-3 gap-3">
+<div class="flex flex-col items-center justify-center gap-2 rounded-2xl bg-white dark:bg-white/5 p-4 shadow-soft border border-stone-100 dark:border-white/5">
+<span class="material-symbols-outlined text-sage" style="font-size: 28px;">schedule</span>
+<div class="text-center">
+<p class="text-xs text-stone-500 dark:text-stone-400 font-sans uppercase tracking-wider">Time</p>
+<p class="text-base font-bold text-background-dark dark:text-white">45 min</p>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center gap-2 rounded-2xl bg-white dark:bg-white/5 p-4 shadow-soft border border-stone-100 dark:border-white/5">
+<span class="material-symbols-outlined text-sage" style="font-size: 28px;">bar_chart</span>
+<div class="text-center">
+<p class="text-xs text-stone-500 dark:text-stone-400 font-sans uppercase tracking-wider">Difficulty</p>
+<p class="text-base font-bold text-background-dark dark:text-white">Medium</p>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center gap-2 rounded-2xl bg-white dark:bg-white/5 p-4 shadow-soft border border-stone-100 dark:border-white/5">
+<span class="material-symbols-outlined text-sage" style="font-size: 28px;">restaurant_menu</span>
+<div class="text-center">
+<p class="text-xs text-stone-500 dark:text-stone-400 font-sans uppercase tracking-wider">Yield</p>
+<p class="text-base font-bold text-background-dark dark:text-white">4 Servings</p>
+</div>
+</div>
+</div>
+<!-- Ingredients Section -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h2 class="text-[22px] font-bold text-background-dark dark:text-white">Ingredientes</h2>
+<span class="text-sm text-stone-500 dark:text-stone-400 font-sans">8 items</span>
+</div>
+<div class="flex flex-col gap-3 rounded-2xl bg-white dark:bg-white/5 p-5 shadow-soft border border-stone-100 dark:border-white/5">
+<!-- Item 1 -->
+<label class="flex items-start gap-3 cursor-pointer group">
+<div class="relative flex items-center justify-center size-6 shrink-0 mt-0.5">
+<input class="peer appearance-none size-5 rounded-md border-2 border-sage/50 checked:bg-sage checked:border-sage transition-all" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-white opacity-0 peer-checked:opacity-100 pointer-events-none" style="font-size: 16px;">check</span>
+</div>
+<span class="text-lg text-stone-800 dark:text-stone-200 group-hover:text-primary transition-colors peer-checked:line-through peer-checked:text-stone-400">
+                            500g ground beef
+                        </span>
+</label>
+<div class="h-px w-full bg-stone-100 dark:bg-white/5"></div>
+<!-- Item 2 -->
+<label class="flex items-start gap-3 cursor-pointer group">
+<div class="relative flex items-center justify-center size-6 shrink-0 mt-0.5">
+<input class="peer appearance-none size-5 rounded-md border-2 border-sage/50 checked:bg-sage checked:border-sage transition-all" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-white opacity-0 peer-checked:opacity-100 pointer-events-none" style="font-size: 16px;">check</span>
+</div>
+<span class="text-lg text-stone-800 dark:text-stone-200 group-hover:text-primary transition-colors">
+                            4 French rolls (pão francês)
+                        </span>
+</label>
+<div class="h-px w-full bg-stone-100 dark:bg-white/5"></div>
+<!-- Item 3 -->
+<label class="flex items-start gap-3 cursor-pointer group">
+<div class="relative flex items-center justify-center size-6 shrink-0 mt-0.5">
+<input class="peer appearance-none size-5 rounded-md border-2 border-sage/50 checked:bg-sage checked:border-sage transition-all" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-white opacity-0 peer-checked:opacity-100 pointer-events-none" style="font-size: 16px;">check</span>
+</div>
+<span class="text-lg text-stone-800 dark:text-stone-200 group-hover:text-primary transition-colors">
+                            1 large onion, chopped
+                        </span>
+</label>
+<div class="h-px w-full bg-stone-100 dark:bg-white/5"></div>
+<!-- Item 4 -->
+<label class="flex items-start gap-3 cursor-pointer group">
+<div class="relative flex items-center justify-center size-6 shrink-0 mt-0.5">
+<input class="peer appearance-none size-5 rounded-md border-2 border-sage/50 checked:bg-sage checked:border-sage transition-all" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-white opacity-0 peer-checked:opacity-100 pointer-events-none" style="font-size: 16px;">check</span>
+</div>
+<span class="text-lg text-stone-800 dark:text-stone-200 group-hover:text-primary transition-colors">
+                            2 cloves garlic, minced
+                        </span>
+</label>
+</div>
+</div>
+<!-- Preparation Section -->
+<div class="flex flex-col gap-5">
+<h2 class="text-[22px] font-bold text-background-dark dark:text-white">Modo de Preparo</h2>
+<div class="flex flex-col gap-6">
+<!-- Step 1 -->
+<div class="flex gap-4 group">
+<div class="flex flex-col items-center">
+<div class="flex items-center justify-center size-8 rounded-full bg-primary text-white font-bold font-sans text-sm shadow-md">1</div>
+<div class="w-0.5 h-full bg-stone-200 dark:bg-white/10 my-2 rounded-full group-last:hidden"></div>
+</div>
+<div class="flex-1 pb-4">
+<div class="bg-white dark:bg-white/5 p-5 rounded-2xl shadow-soft border border-stone-100 dark:border-white/5">
+<p class="text-lg leading-relaxed text-stone-800 dark:text-stone-200">
+                                    Heat olive oil in a large skillet over medium heat. Add the chopped onions and sauté until translucent, about 5 minutes.
+                                </p>
+</div>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex gap-4 group">
+<div class="flex flex-col items-center">
+<div class="flex items-center justify-center size-8 rounded-full bg-terracotta text-white font-bold font-sans text-sm shadow-md">2</div>
+<div class="w-0.5 h-full bg-stone-200 dark:bg-white/10 my-2 rounded-full group-last:hidden"></div>
+</div>
+<div class="flex-1 pb-4">
+<div class="bg-white dark:bg-white/5 p-5 rounded-2xl shadow-soft border border-stone-100 dark:border-white/5">
+<p class="text-lg leading-relaxed text-stone-800 dark:text-stone-200">
+                                    Add the ground beef and garlic. Cook, breaking up the meat with a wooden spoon, until browned and cooked through.
+                                </p>
+</div>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex gap-4 group">
+<div class="flex flex-col items-center">
+<div class="flex items-center justify-center size-8 rounded-full bg-terracotta text-white font-bold font-sans text-sm shadow-md">3</div>
+<div class="w-0.5 h-full bg-stone-200 dark:bg-white/10 my-2 rounded-full group-last:hidden"></div>
+</div>
+<div class="flex-1 pb-4">
+<div class="bg-white dark:bg-white/5 p-5 rounded-2xl shadow-soft border border-stone-100 dark:border-white/5">
+<p class="text-lg leading-relaxed text-stone-800 dark:text-stone-200">
+                                    Stir in the tomato sauce, salt, pepper, and any optional spices. Simmer for 10-15 minutes until the sauce thickens slightly.
+                                </p>
+</div>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="flex gap-4 group">
+<div class="flex flex-col items-center">
+<div class="flex items-center justify-center size-8 rounded-full bg-terracotta text-white font-bold font-sans text-sm shadow-md">4</div>
+</div>
+<div class="flex-1">
+<div class="bg-white dark:bg-white/5 p-5 rounded-2xl shadow-soft border border-stone-100 dark:border-white/5">
+<p class="text-lg leading-relaxed text-stone-800 dark:text-stone-200">
+                                    Slice the rolls and remove the soft bread from the inside (creating a "buraco"). Fill generously with the hot meat mixture and serve immediately.
+                                </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Action Button -->
+<div class="fixed bottom-6 right-6 z-30">
+<button class="flex items-center gap-2 bg-primary hover:bg-orange-600 text-white pl-5 pr-6 py-4 rounded-full shadow-lg shadow-primary/30 transition-all active:scale-95">
+<span class="material-symbols-outlined">play_arrow</span>
+<span class="font-bold text-base tracking-wide font-sans">Start Cooking</span>
+</button>
+</div>
+</div>
+</body></html>
