@@ -7,7 +7,8 @@ class Receita(BaseModel):
     porcoes: int = Field(default=2, ge=1)
     ingredientes_usados: list[str]
     modo_de_preparo: list[str]
-    descricao_imagem: str
+    descricao_imagem: str | None = None
+    visual_tag: str = Field(description="Short visual description in English for image generation")
     tipo_receita: Literal["destaque", "pratica"]
 
 class ReceitasResponse(BaseModel):

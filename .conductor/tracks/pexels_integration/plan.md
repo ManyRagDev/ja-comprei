@@ -159,10 +159,10 @@ asyncio.run(test())
 
 ## Checklist
 
-- [ ] Adicionar configurações no `config.py`
-- [ ] Criar `pexels_service.py`
-- [ ] Modificar `ai_orchestrator.py` (manter Pollinations comentado)
-- [ ] Atualizar `tech-stack.md`
-- [ ] Testar busca isolada do Pexels
+- [x] Adicionar configurações no `config.py`
+- [x] Criar `pexels_service.py`
+- [x] Modificar `ai_orchestrator.py` (manter Pollinations como alternativa)
+- [x] Atualizar `tech-stack.md`
+- [ ] Testar busca isolada do Pexels (requer `PEXELS_API_KEY`)
 - [ ] Testar fluxo completo de receitas
 - [ ] Testar alternância entre providers

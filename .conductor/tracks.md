@@ -51,4 +51,8 @@ This file will contain a list of your project tracks.
 
 ## pexels_integration
 **Objective:** Substituir geração de imagens do Pollinations por busca no Pexels para thumbnails de receitas, mantendo código do Pollinations para fallback.
-- [ ] [Integração Pexels](.conductor/tracks/pexels_integration/plan.md)
+- [x] [Integração Pexels](.conductor/tracks/pexels_integration/plan.md)
+
+## ghibli_migration
+**Objective:** Pivotar identidade visual para ilustrações AI estilo Studio Ghibli (Anime Food), removendo Pexels e unificando o estilo.
+- [ ] [Migração Ghibli](.conductor/tracks/ghibli_migration/plan.md)

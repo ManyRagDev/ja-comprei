@@ -11,7 +11,7 @@ Aplicação inteligente para gerenciamento de compras domésticas e culinária, 
 5.  **Interface Moderna:** Design responsivo (Mobile-First) com suporte total a Light/Dark Mode.
 6.  **Dashboard:** Hub centralizado para acesso rápido a todos os serviços.
 7.  **Privacidade:** Controle rigoroso de câmera (ativa apenas na tela de Scanner com indicador visual).
-8.  **Experiência Visual Imersiva:** Geração de imagens de pratos coerentes com as receitas (Pollinations AI) e telas de espera interativas com dicas culinárias.
+8.  **Experiência Visual Imersiva:** Geração de imagens exclusivas em estilo "Studio Ghibli" (Pollinations AI) para todas as receitas, garantindo identidade visual única e apetitosa.
 
 ## Público Alvo
 Pessoas responsáveis pelas compras da casa e cozinha, buscando otimizar tempo e reduzir desperdício.

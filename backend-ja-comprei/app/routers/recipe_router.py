@@ -19,7 +19,7 @@ async def sugerir_receitas(pedido: PedidoReceitas):
     print(f"Gerando receitas para: {lista_nomes}")
     try:
         # Use Orchestrator to include Images
-        return ai_orchestrator.generate_recipes_with_images(lista_nomes)
+        return await ai_orchestrator.generate_recipes_with_images(lista_nomes)
     except Exception as e:
         print(f"Erro ao gerar receitas: {e}")
         raise HTTPException(status_code=500, detail=str(e))

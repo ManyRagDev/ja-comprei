@@ -115,12 +115,12 @@ export default function RecipeDetail({ recipe, onBack }) {
                     <div className="flex flex-col gap-3 rounded-2xl bg-white dark:bg-white/5 p-5 shadow-sm border border-stone-100 dark:border-white/5">
                         {ingredients.map((ing, idx) => (
                             <div key={idx}>
-                                <label className="flex items-start gap-3 cursor-pointer group">
+                                <label className="flex items-start gap-3 cursor-default group">
                                     <div className="relative flex items-center justify-center size-6 shrink-0 mt-0.5">
-                                        <input className="peer appearance-none size-5 rounded-md border-2 border-[#81B29A]/50 checked:bg-[#81B29A] checked:border-[#81B29A] transition-all" type="checkbox" />
+                                        <input className="peer appearance-none size-5 rounded-md border-2 border-[#81B29A]/50 checked:bg-[#81B29A] checked:border-[#81B29A] transition-all" type="checkbox" checked readOnly />
                                         <Check size={14} className="absolute text-white opacity-0 peer-checked:opacity-100 pointer-events-none" />
                                     </div>
-                                    <span className="text-lg text-stone-800 dark:text-stone-200 group-hover:text-[#ee522b] transition-colors peer-checked:line-through peer-checked:text-stone-400 font-serif">
+                                    <span className="text-lg text-stone-800 dark:text-stone-200 font-serif">
                                         {typeof ing === 'string' ? ing : `${ing.quantidade || ''} ${ing.item || ''}`}
                                     </span>
                                 </label>
