@@ -55,4 +55,23 @@ This file will contain a list of your project tracks.
 
 ## ghibli_migration
 **Objective:** Pivotar identidade visual para ilustrações AI estilo Studio Ghibli (Anime Food), removendo Pexels e unificando o estilo.
-- [ ] [Migração Ghibli](.conductor/tracks/ghibli_migration/plan.md)
+- [x] [Migração Ghibli](.conductor/tracks/ghibli_migration/plan.md)
+
+## supabase_persistence
+**Objective:** Implementar persistência de receitas no Supabase com autenticação dev mode.
+- [x] [Persistência Supabase](.conductor/tracks/supabase_persistence/plan.md)
+
+## saved_recipes_page
+**Objective:** Criar página para visualização das receitas salvas pelo usuário.
+- [x] [Página Minhas Receitas](.conductor/tracks/saved_recipes_page/plan.md)
+
+## navigation_bar
+**Objective:** Implementar barra de navegação persistente no rodapé.
+- [x] [Barra de Navegação](.conductor/tracks/navigation_bar/plan.md)
+
+## shopping_list_persistence
+**Objective:** Salvar e gerenciar listas de compras no Supabase.
+- [x] [Persistência de Listas](.conductor/tracks/shopping_list_persistence/plan.md)
+- [x] [Página de Perfil](.conductor/tracks/profile_page/plan.md)
+- [x] [Sistema de Créditos](.conductor/tracks/credits_system/plan.md)
+- [x] [Sistema de Slug para Receitas](.conductor/tracks/recipe_slug_system/plan.md)

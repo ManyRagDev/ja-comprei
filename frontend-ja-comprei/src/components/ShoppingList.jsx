@@ -1,10 +1,14 @@
-import { ArrowLeft, Check, Edit2, PlusCircle, UtensilsCrossed, Trash2 } from 'lucide-react';
+import { ArrowLeft, Check, Edit2, PlusCircle, UtensilsCrossed, Trash2, Save } from 'lucide-react';
 import { useState } from 'react';
+import { useRecipes } from '../context/RecipeContext';
+import { saveShoppingList } from '../services/recipeService';
 
 export default function ShoppingList({ ingredients, onGenerate, onAddIngredient, onBack }) {
+    const { user } = useRecipes();
     const [items, setItems] = useState(ingredients.map(i => ({ ...i, checked: true })));
     const [isAddItemOpen, setIsAddItemOpen] = useState(false);
     const [editingItem, setEditingItem] = useState(null); // Item being edited
+    const [isSaving, setIsSaving] = useState(false);
 
     const toggleItem = (id) => {
         setItems(items.map(item =>
@@ -28,6 +32,33 @@ export default function ShoppingList({ ingredients, onGenerate, onAddIngredient,
         onGenerate(selectedItems);
     };
 
+    const handleSaveList = async () => {
+        if (!user) {
+            alert('Você precisa estar logado para salvar listas.');
+            return;
+        }
+
+        const validItems = items.filter(i => i.name && i.name.trim() !== '');
+        if (validItems.length === 0) {
+            alert('A lista está vazia.');
+            return;
+        }
+
+        const listTitle = prompt('Dê um nome para sua lista:', `Lista ${new Date().toLocaleDateString('pt-BR')}`);
+        if (!listTitle) return;
+
+        setIsSaving(true);
+        try {
+            await saveShoppingList(user.id, listTitle, validItems);
+            alert('Lista salva com sucesso!');
+        } catch (error) {
+            alert('Erro ao salvar lista. Tente novamente.');
+            console.error(error);
+        } finally {
+            setIsSaving(false);
+        }
+    };
+
     return (
         <div className="relative flex h-full min-h-screen w-full flex-col mx-auto shadow-2xl bg-[#f6f8f7] dark:bg-[#102217] transition-colors duration-200 font-sans text-[#102217] dark:text-white md:max-w-7xl md:px-0">
             {/* Header */}
@@ -38,7 +69,14 @@ export default function ShoppingList({ ingredients, onGenerate, onAddIngredient,
                 <h1 className="flex-1 text-center text-xl font-bold tracking-tight">
                     Lista de Compras
                 </h1>
-                <div className="size-10"></div>
+                <button
+                    onClick={handleSaveList}
+                    disabled={isSaving || items.length === 0}
+                    className="group flex size-10 items-center justify-center rounded-full bg-white dark:bg-white/10 shadow-sm transition-transform hover:scale-105 active:scale-95 text-[#13ec6a] disabled:opacity-50"
+                    title="Salvar Lista"
+                >
+                    <Save size={20} className={isSaving ? 'animate-pulse' : ''} />
+                </button>
             </header>
 
             {/* Main Content List */}
@@ -89,6 +127,17 @@ export default function ShoppingList({ ingredients, onGenerate, onAddIngredient,
                     >
                         <PlusCircle size={20} />
                         <span className="text-sm font-semibold">Adicionar item manualmente</span>
+                    </button>
+                </div>
+                {/* Generate Button (Static at bottom) */}
+                <div className="mt-8 flex justify-center w-full">
+                    <button
+                        onClick={handleGenerateClick}
+                        disabled={items.filter(i => i.checked).length === 0}
+                        className="flex h-14 w-full items-center justify-center gap-3 rounded-full bg-[#13ec6a] text-[#102217] shadow-lg shadow-[#13ec6a]/20 transition-transform active:scale-95 hover:shadow-xl hover:shadow-[#13ec6a]/30 md:w-auto md:px-12 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        <UtensilsCrossed size={24} className="fill-current" />
+                        <span className="text-lg font-bold">Sugerir Receitas</span>
                     </button>
                 </div>
             </main>
@@ -234,17 +283,7 @@ export default function ShoppingList({ ingredients, onGenerate, onAddIngredient,
                 </div>
             )}
 
-            {/* Floating Action Button */}
-            <div className="fixed bottom-0 left-0 right-0 z-20 flex justify-center p-6 bg-gradient-to-t from-[#f6f8f7] via-[#f6f8f7] to-transparent dark:from-[#102217] dark:via-[#102217] pointer-events-none w-full md:max-w-7xl md:mx-auto">
-                <button
-                    onClick={handleGenerateClick}
-                    disabled={items.filter(i => i.checked).length === 0}
-                    className="pointer-events-auto flex h-14 w-full items-center justify-center gap-3 rounded-full bg-[#13ec6a] text-[#102217] shadow-lg shadow-[#13ec6a]/20 transition-transform active:scale-95 hover:shadow-xl hover:shadow-[#13ec6a]/30 md:w-auto md:px-12 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                    <UtensilsCrossed size={24} className="fill-current" />
-                    <span className="text-lg font-bold">Sugerir Receitas</span>
-                </button>
-            </div>
+
         </div>
     );
 }

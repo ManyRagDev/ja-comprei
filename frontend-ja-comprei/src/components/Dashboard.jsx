@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import {
     ScanLine,
+    BookOpen,
     ClipboardList,
     ChefHat,
     Mic,
@@ -47,22 +48,22 @@ export default function Dashboard({ onNavigate }) {
             route: 'scanner'
         },
         {
-            id: 'lists',
-            label: 'Minhas Listas',
-            description: 'Gerencie suas listas de compras.',
-            icon: ClipboardList,
+            id: 'saved-recipes',
+            label: 'Minhas Receitas',
+            description: 'Acesse seu livro de receitas salvas.',
+            icon: BookOpen,
             color: 'bg-sage',
             bgLight: 'bg-sage/10',
-            route: 'shopping-list' // Placeholder: may show empty state
+            route: 'minhas-receitas'
         },
         {
-            id: 'recipes',
-            label: 'Gerar Receitas',
-            description: 'Receba sugestões do Chef IA.',
-            icon: ChefHat,
+            id: 'saved-lists',
+            label: 'Minhas Listas',
+            description: 'Histórico de compras salvas.',
+            icon: ClipboardList,
             color: 'bg-amber-500',
             bgLight: 'bg-amber-500/10',
-            route: 'suggestions' // Placeholder
+            route: 'minhas-listas'
         },
         {
             id: 'voice',

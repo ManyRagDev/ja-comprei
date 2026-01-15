@@ -69,8 +69,8 @@ Receitas devem demonstrar técnica culinária, não apenas montagem.
   - Finalização com elementos ácidos (limão, vinagre) para balanço
 
 ### 5.4 Complexidade Adequada
-- Toda receita deve conter **no mínimo 4 passos substantivos**.
-- **Não há limite máximo de passos - expanda conforme necessário para explicar adequadamente cada técnica.**
+- Toda receita deve conter **passos suficiente para gerar uma receita completa que possa ser seguida por qualquer pessoa.
+- **Não há limite máximo de passos - expanda conforme necessário para explicar adequada e detalhadamente cada técnica.**
 - Cada passo deve representar uma ação culinária real, não apenas "sirva" ou "decore".
 - Se a receita naturalmente teria menos passos, expanda descrevendo técnicas de preparo, tempero e descanso.
 - **Receitas complexas podem facilmente ter 6-10 passos ou mais.**
@@ -97,7 +97,7 @@ Retorne um JSON com a chave 'receitas'. Cada objeto contém:
 1. `nome_do_prato`: Nome atraente em português.
 2. `tempo_preparo`: Tempo estimado.
 3. `porcoes`: Número de porções (inteiro).
-4. `ingredientes_usados`: Lista com quantidades estimadas (inclui Despensa Virtual se usada).
+4. `ingredientes_usados`: Lista de strings no formato "QUANTIDADE + NOME DO INGREDIENTE" (ex: "2 cenouras médias", "1 colher de sopa de azeite", "Sal a gosto"). Nunca retorne apenas a quantidade sem o nome.
 5. `modo_de_preparo`: Lista de passos estruturados:
    - Fase de Preparo (mise en place, temperos, cortes)
    - Fase de Cocção (técnica térmica aplicada)

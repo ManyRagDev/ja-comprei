@@ -1,7 +1,33 @@
-import { ArrowLeft, Clock, BarChart2, Users, Play, Heart, Check, ChevronLeft } from 'lucide-react';
+import { ArrowLeft, Clock, BarChart2, Users, Play, Heart, Check, ChevronLeft, Save, Loader2 } from 'lucide-react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function RecipeDetail({ recipe, onBack }) {
+import { useRecipes } from '../context/RecipeContext';
+import { saveRecipeToSupabase } from '../services/recipeService';
+
+export default function RecipeDetail({ recipe, onBack, isSavedView = false }) {
+    const { user } = useRecipes();
+    const navigate = useNavigate();
+    const [saving, setSaving] = useState(false);
+    const [saved, setSaved] = useState(false);
+
+    const handleSave = async () => {
+        if (!user) {
+            alert('Erro: Usuário não autenticado no modo Dev (verifique o console para erros de login).');
+            return;
+        }
+        setSaving(true);
+        try {
+            const result = await saveRecipeToSupabase(recipe, user.id);
+            setSaved(true);
+            // Redireciona para URL permanente após salvar
+            navigate(`/r/${result.slug}`);
+        } catch (error) {
+            alert('Erro ao salvar receita: ' + (error.message || 'Erro desconhecido'));
+        } finally {
+            setSaving(false);
+        }
+    };
     if (!recipe) return null;
 
     // Normalize data fields (AI might return Portuguese keys)
@@ -41,7 +67,7 @@ export default function RecipeDetail({ recipe, onBack }) {
     const tags = recipe.tags || ['Popular', 'Spicy'];
 
     return (
-        <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden group/design-root bg-[#FDFBF7] dark:bg-[#221410] text-[#221410] dark:text-[#FDFBF7] font-serif transition-colors duration-200 md:flex-row md:h-screen md:overflow-hidden">
+        <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden group/design-root bg-[#FDFBF7] dark:bg-[#221410] text-[#221410] dark:text-[#FDFBF7] font-serif transition-colors duration-200 md:fixed md:inset-0 md:flex-row md:overflow-hidden">
 
             {/* Hero Section */}
             <div className="relative w-full h-[40vh] min-h-[320px] md:h-full md:w-1/2 md:shrink-0">
@@ -65,106 +91,133 @@ export default function RecipeDetail({ recipe, onBack }) {
                 </div>
             </div>
 
-            {/* Main Content */}
-            <div className="relative px-6 -mt-8 z-10 flex flex-col gap-8 pb-32 md:w-1/2 md:mt-0 md:h-full md:overflow-y-auto md:px-12 md:pt-12 md:pb-12 bg-[#FDFBF7] dark:bg-[#221410]">
-                {/* Title Header */}
-                <div className="flex flex-col gap-2">
-                    <div className="flex items-center gap-2 mb-1">
-                        {tags.map((tag, idx) => (
-                            <span key={idx} className={`px-3 py-1 text-sm font-bold rounded-full border ${idx === 0 ? 'bg-[#E07A5F]/10 text-[#E07A5F] border-[#E07A5F]/20' : 'bg-[#81B29A]/10 text-[#81B29A] border-[#81B29A]/20'} font-sans`}>
-                                {tag}
+            {/* Right Column Wrapper (Desktop) */}
+            <div className="relative flex flex-col md:w-1/2 md:h-full bg-[#FDFBF7] dark:bg-[#221410]">
+
+                {/* Desktop Floating Save Button */}
+                {!isSavedView && !saved && (
+                    <div className="absolute top-6 right-8 z-30 hidden md:block">
+                        <button
+                            onClick={handleSave}
+                            disabled={saving}
+                            className="flex items-center justify-center gap-2 bg-[#ee522b] hover:bg-orange-600 disabled:bg-stone-400 text-white px-6 py-3 rounded-full shadow-lg shadow-[#ee522b]/30 transition-all active:scale-95 hover:scale-105"
+                        >
+                            {saving ? <Loader2 size={20} className="animate-spin" /> : <Save size={20} className="fill-current" />}
+                            <span className="font-bold text-sm tracking-wide font-sans">
+                                {saving ? 'Sal...' : 'Salvar'}
                             </span>
-                        ))}
+                        </button>
                     </div>
-                    <h1 className="text-[36px] leading-[1.1] font-bold">
-                        {title}
-                    </h1>
-                </div>
+                )}
 
-                {/* Metadata Grid */}
-                <div className="grid grid-cols-3 gap-3">
-                    <div className="flex flex-col items-center justify-center gap-2 rounded-2xl bg-white dark:bg-white/5 p-4 shadow-sm border border-stone-100 dark:border-white/5">
-                        <Clock size={28} className="text-[#81B29A]" />
-                        <div className="text-center">
-                            <p className="text-xs text-stone-500 dark:text-stone-400 font-sans uppercase tracking-wider">Tempo</p>
-                            <p className="text-base font-bold">{time}</p>
+                {/* Main Content (Scrollable on Desktop) */}
+                <div className="relative px-6 -mt-8 z-10 flex flex-col gap-8 pb-32 md:mt-0 md:h-full md:overflow-y-auto md:px-12 md:pt-12 md:pb-32">
+                    {/* Title Header */}
+                    <div className="flex flex-col gap-2 md:pr-32"> {/* Added padding-right to avoid overlap with floating button */}
+                        <div className="flex items-center gap-2 mb-1">
+                            {tags.map((tag, idx) => (
+                                <span key={idx} className={`px-3 py-1 text-sm font-bold rounded-full border ${idx === 0 ? 'bg-[#E07A5F]/10 text-[#E07A5F] border-[#E07A5F]/20' : 'bg-[#81B29A]/10 text-[#81B29A] border-[#81B29A]/20'} font-sans`}>
+                                    {tag}
+                                </span>
+                            ))}
                         </div>
+                        <h1 className="text-[36px] leading-[1.1] font-bold">
+                            {title}
+                        </h1>
                     </div>
-                    <div className="flex flex-col items-center justify-center gap-2 rounded-2xl bg-white dark:bg-white/5 p-4 shadow-sm border border-stone-100 dark:border-white/5">
-                        <BarChart2 size={28} className="text-[#81B29A]" />
-                        <div className="text-center">
-                            <p className="text-xs text-stone-500 dark:text-stone-400 font-sans uppercase tracking-wider">Dificuldade</p>
-                            <p className="text-base font-bold">{recipe.difficulty || 'Média'}</p>
-                        </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-center gap-2 rounded-2xl bg-white dark:bg-white/5 p-4 shadow-sm border border-stone-100 dark:border-white/5">
-                        <Users size={28} className="text-[#81B29A]" />
-                        <div className="text-center">
-                            <p className="text-xs text-stone-500 dark:text-stone-400 font-sans uppercase tracking-wider">Porções</p>
-                            <p className="text-base font-bold">4</p>
-                        </div>
-                    </div>
-                </div>
 
-                {/* Ingredients Section */}
-                <div className="flex flex-col gap-4">
-                    <div className="flex items-center justify-between">
-                        <h2 className="text-[22px] font-bold">Ingredientes</h2>
-                        <span className="text-sm text-stone-500 dark:text-stone-400 font-sans">{ingredients.length} itens</span>
-                    </div>
-                    <div className="flex flex-col gap-3 rounded-2xl bg-white dark:bg-white/5 p-5 shadow-sm border border-stone-100 dark:border-white/5">
-                        {ingredients.map((ing, idx) => (
-                            <div key={idx}>
-                                <label className="flex items-start gap-3 cursor-default group">
-                                    <div className="relative flex items-center justify-center size-6 shrink-0 mt-0.5">
-                                        <input className="peer appearance-none size-5 rounded-md border-2 border-[#81B29A]/50 checked:bg-[#81B29A] checked:border-[#81B29A] transition-all" type="checkbox" checked readOnly />
-                                        <Check size={14} className="absolute text-white opacity-0 peer-checked:opacity-100 pointer-events-none" />
-                                    </div>
-                                    <span className="text-lg text-stone-800 dark:text-stone-200 font-serif">
-                                        {typeof ing === 'string' ? ing : `${ing.quantidade || ''} ${ing.item || ''}`}
-                                    </span>
-                                </label>
-                                {idx < ingredients.length - 1 && <div className="h-px w-full bg-stone-100 dark:bg-white/5 my-3"></div>}
+                    {/* Metadata Grid */}
+                    <div className="grid grid-cols-3 gap-3">
+                        <div className="flex flex-col items-center justify-center gap-2 rounded-2xl bg-white dark:bg-white/5 p-4 shadow-sm border border-stone-100 dark:border-white/5">
+                            <Clock size={28} className="text-[#81B29A]" />
+                            <div className="text-center">
+                                <p className="text-xs text-stone-500 dark:text-stone-400 font-sans uppercase tracking-wider">Tempo</p>
+                                <p className="text-base font-bold">{time}</p>
                             </div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Preparation Section */}
-                <div className="flex flex-col gap-5">
-                    <h2 className="text-[22px] font-bold">Modo de Preparo</h2>
-                    <div className="flex flex-col gap-6">
-                        {steps.map((step, idx) => (
-                            <div key={idx} className="flex gap-4 group">
-                                <div className="flex flex-col items-center">
-                                    <div className="flex items-center justify-center size-8 rounded-full bg-[#E07A5F] text-white font-bold font-sans text-sm shadow-md">
-                                        {idx + 1}
-                                    </div>
-                                    {idx < steps.length - 1 && <div className="w-0.5 h-full bg-stone-200 dark:bg-white/10 my-2 rounded-full"></div>}
-                                </div>
-                                <div className="flex-1 pb-4">
-                                    <div className="bg-white dark:bg-white/5 p-5 rounded-2xl shadow-sm border border-stone-100 dark:border-white/5">
-                                        <p className="text-lg leading-relaxed text-stone-800 dark:text-stone-200">
-                                            {step}
-                                        </p>
-                                    </div>
-                                </div>
+                        </div>
+                        <div className="flex flex-col items-center justify-center gap-2 rounded-2xl bg-white dark:bg-white/5 p-4 shadow-sm border border-stone-100 dark:border-white/5">
+                            <BarChart2 size={28} className="text-[#81B29A]" />
+                            <div className="text-center">
+                                <p className="text-xs text-stone-500 dark:text-stone-400 font-sans uppercase tracking-wider">Dificuldade</p>
+                                <p className="text-base font-bold">{recipe.difficulty || 'Média'}</p>
                             </div>
-                        ))}
+                        </div>
+                        <div className="flex flex-col items-center justify-center gap-2 rounded-2xl bg-white dark:bg-white/5 p-4 shadow-sm border border-stone-100 dark:border-white/5">
+                            <Users size={28} className="text-[#81B29A]" />
+                            <div className="text-center">
+                                <p className="text-xs text-stone-500 dark:text-stone-400 font-sans uppercase tracking-wider">Porções</p>
+                                <p className="text-base font-bold">4</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
+                    {/* Ingredients Section */}
+                    <div className="flex flex-col gap-4">
+                        <div className="flex items-center justify-between">
+                            <h2 className="text-[22px] font-bold">Ingredientes</h2>
+                            <span className="text-sm text-stone-500 dark:text-stone-400 font-sans">{ingredients.length} itens</span>
+                        </div>
+                        <div className="flex flex-col gap-3 rounded-2xl bg-white dark:bg-white/5 p-5 shadow-sm border border-stone-100 dark:border-white/5">
+                            {ingredients.map((ing, idx) => (
+                                <div key={idx}>
+                                    <label className="flex items-start gap-3 cursor-default group">
+                                        <div className="relative flex items-center justify-center size-6 shrink-0 mt-0.5">
+                                            <input className="peer appearance-none size-5 rounded-md border-2 border-[#81B29A]/50 checked:bg-[#81B29A] checked:border-[#81B29A] transition-all" type="checkbox" checked readOnly />
+                                            <Check size={14} className="absolute text-white opacity-0 peer-checked:opacity-100 pointer-events-none" />
+                                        </div>
+                                        <span className="text-lg text-stone-800 dark:text-stone-200 font-serif">
+                                            {typeof ing === 'string' ? ing : `${ing.quantidade || ''} ${ing.item || ''}`}
+                                        </span>
+                                    </label>
+                                    {idx < ingredients.length - 1 && <div className="h-px w-full bg-stone-100 dark:bg-white/5 my-3"></div>}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Preparation Section */}
+                    <div className="flex flex-col gap-5">
+                        <h2 className="text-[22px] font-bold">Modo de Preparo</h2>
+                        <div className="flex flex-col gap-6">
+                            {steps.map((step, idx) => (
+                                <div key={idx} className="flex gap-4 group">
+                                    <div className="flex flex-col items-center">
+                                        <div className="flex items-center justify-center size-8 rounded-full bg-[#E07A5F] text-white font-bold font-sans text-sm shadow-md">
+                                            {idx + 1}
+                                        </div>
+                                        {idx < steps.length - 1 && <div className="w-0.5 h-full bg-stone-200 dark:bg-white/10 my-2 rounded-full"></div>}
+                                    </div>
+                                    <div className="flex-1 pb-4">
+                                        <div className="bg-white dark:bg-white/5 p-5 rounded-2xl shadow-sm border border-stone-100 dark:border-white/5">
+                                            <p className="text-lg leading-relaxed text-stone-800 dark:text-stone-200">
+                                                {step}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Mobile Save Action Button (Hidden on Desktop) */}
+                    {!isSavedView && !saved && (
+                        <div className="mt-6 flex justify-center w-full md:hidden">
+                            <button
+                                onClick={handleSave}
+                                disabled={saving}
+                                className="flex w-full items-center justify-center gap-2 bg-[#ee522b] hover:bg-orange-600 disabled:bg-stone-400 text-white px-8 py-4 rounded-full shadow-lg shadow-[#ee522b]/30 transition-all active:scale-95"
+                            >
+                                {saving ? <Loader2 size={24} className="animate-spin" /> : <Save size={24} className="fill-current" />}
+                                <span className="font-bold text-base tracking-wide font-sans">
+                                    {saving ? 'Salvando...' : 'Salvar Receita'}
+                                </span>
+                            </button>
+                        </div>
+                    )}
+                </div>
             </div>
 
             {/* Floating Action Button - To be implemented in future feature */}
-            {/*
-            <div className="fixed bottom-6 right-6 z-30">
-                <button className="flex items-center gap-2 bg-[#ee522b] hover:bg-orange-600 text-white pl-5 pr-6 py-4 rounded-full shadow-lg shadow-[#ee522b]/30 transition-all active:scale-95">
-                    <Play size={24} className="fill-current" />
-                    <span className="font-bold text-base tracking-wide font-sans">Começar</span>
-                </button>
-            </div>
-            */}
 
         </div>
     );

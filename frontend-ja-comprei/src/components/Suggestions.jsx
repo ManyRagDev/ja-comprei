@@ -97,28 +97,7 @@ export default function Suggestions({ recipes, onSelectRecipe, onBack }) {
                 </div>
             </main>
 
-            {/* Bottom Navigation */}
-            <nav className="fixed bottom-0 z-50 w-full max-w-md border-t border-[#ebefed] bg-white/95 px-8 pb-8 pt-4 backdrop-blur-xl dark:bg-[#171c19]/95 dark:border-white/5 left-0 right-0 mx-auto md:rounded-t-2xl md:mb-4 md:shadow-2xl md:border-x">
-                <div className="flex items-end justify-between">
-                    <button onClick={onBack} className="group flex flex-1 flex-col items-center gap-1.5 text-[#677e70] transition-colors hover:text-[#81B29A] dark:text-gray-500">
-                        <QrCode size={28} className="transition-transform group-hover:-translate-y-1" />
-                        <span className="text-[10px] font-bold tracking-wider font-sans uppercase">Scan</span>
-                    </button>
 
-                    <button className="group flex flex-1 flex-col items-center gap-1.5 text-[#81B29A] transition-colors dark:text-[#80b294]">
-                        <div className="relative">
-                            <BookOpen size={28} className="drop-shadow-sm transition-transform group-hover:-translate-y-1 fill-current" />
-                            <span className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-[#E07A5F] dark:border-[#171c19]"></span>
-                        </div>
-                        <span className="text-[10px] font-bold tracking-wider font-sans uppercase">Receitas</span>
-                    </button>
-
-                    <button className="group flex flex-1 flex-col items-center gap-1.5 text-[#677e70] transition-colors hover:text-[#81B29A] dark:text-gray-500">
-                        <User size={28} className="transition-transform group-hover:-translate-y-1" />
-                        <span className="text-[10px] font-bold tracking-wider font-sans uppercase">Perfil</span>
-                    </button>
-                </div>
-            </nav>
 
             {/* Prompt Debug Modal */}
             {selectedPrompt && (

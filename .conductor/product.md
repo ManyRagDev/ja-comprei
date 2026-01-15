@@ -12,6 +12,11 @@ Aplicação inteligente para gerenciamento de compras domésticas e culinária, 
 6.  **Dashboard:** Hub centralizado para acesso rápido a todos os serviços.
 7.  **Privacidade:** Controle rigoroso de câmera (ativa apenas na tela de Scanner com indicador visual).
 8.  **Experiência Visual Imersiva:** Geração de imagens exclusivas em estilo "Studio Ghibli" (Pollinations AI) para todas as receitas, garantindo identidade visual única e apetitosa.
+9.  **Livro de Receitas (Persistence):**
+    - Salve suas receitas favoritas geradas pela IA.
+    - Acesse a qualquer momento na aba "Minhas Receitas".
+    - Sincronização automática na nuvem (Supabase).
+10. **Navegação Simplificada:** Barra de menu inferior persistente (Home, Novo, Receitas) para acesso rápido.
 
 ## Público Alvo
 Pessoas responsáveis pelas compras da casa e cozinha, buscando otimizar tempo e reduzir desperdício.
@@ -19,12 +24,6 @@ Pessoas responsáveis pelas compras da casa e cozinha, buscando otimizar tempo e
 ---
 
 ## Backlog (Funcionalidades Futuras)
-
-### Receitas Persistentes por Usuário
-As receitas geradas serão associadas ao ID do usuário autenticado, permitindo:
-- URL única por receita (ex: `/receita/:userId/:receitaId`).
-- Histórico pessoal de receitas salvas.
-- Possibilidade de favoritar e organizar em coleções.
 
 ### Receitas Públicas/Privadas e Compartilhamento
 Configuração de visibilidade por receita:
@@ -36,3 +35,6 @@ Configuração de visibilidade por receita:
 - Campo `visibility` na tabela de receitas: `private | public | unlisted`.
 - Middleware de autorização no backend para verificar permissões.
 - No frontend, botão "Compartilhar" que copia a URL ou abre modal de configuração.
+
+### Segurança e Dívida Técnica
+- [ ] **Segurança (Backend):** Mover lógica de desconto de créditos para RPC/Backend para evitar manipulação via cliente (RLS permissiva atual é risco para produção).
